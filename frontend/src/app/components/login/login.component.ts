@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component} from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,19 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-  @Output() login = new EventEmitter<{username:string, password: string}>();
   username: string = '';
   password: string = '';
+  errorMessage: string = '';
+  
+  constructor(private authService: AuthService) {
+
+  }
+
+  login(){
+    this.authService.login(this.username, this.password)
+      .then(data => console.log('Sucesso', data))
+      .catch(err => {console.error('Falha', err);
+        this.errorMessage = 'Falha no Login. Por favor cheque suas credenciais.'
+      })
+  }
 }

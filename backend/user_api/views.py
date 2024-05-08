@@ -13,7 +13,7 @@ class UserRegister(APIView):
 		serializer = UserRegisterSerializer(data=request.data)
 		if serializer.is_valid():
 			serializer.create(serializer.validated_data)
-			return Response(status=status.HTTP_201_CREATED)
+			return Response(serializer.data, status=status.HTTP_201_CREATED)
 		return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class UserLogin(APIView):
@@ -25,7 +25,7 @@ class UserLogin(APIView):
 		if serializer.is_valid():
 			user = serializer.check_user(serializer.validated_data)
 			login(request, user)
-			return Response(status=status.HTTP_200_OK)
+			return Response(serializer.data, status=status.HTTP_200_OK)
 		return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 	
 class UserLogout(APIView):
@@ -43,3 +43,10 @@ class UserView(APIView):
 	def get(self, request):
 		serializer = UserSerializer(request.user)
 		return Response({'user': serializer.data}, status=status.HTTP_200_OK)
+	
+class IsAthenticated(APIView):
+	permission_classes = (permissions.AllowAny,)
+	def get(self, request):
+		if request.user.is_authenticated:
+			return Response({'authenticated' : True})
+		return Response({'authenticated' : False})

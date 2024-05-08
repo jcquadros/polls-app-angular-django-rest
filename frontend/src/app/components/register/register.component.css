@@ -1,4 +1,4 @@
-.login-container {
+.register-container {
   width: 100%;
   max-width: 400px;
   margin: 0 auto;
@@ -8,21 +8,21 @@
   background-color: var(--secondary-color);
 }
 
-.login-container h2 {
+.register-container h2 {
   text-align: center;
   margin-bottom: 20px;
 }
 
-.login-container form {
+.register-container form {
   display: flex;
   flex-direction: column;
 }
 
-.login-container label {
+.register-container label {
   margin-bottom: 10px;
 }
 
-.login-container input {
+.register-container input {
   padding: 10px;
   margin-bottom: 15px;
   border: 1px solid #ccc;

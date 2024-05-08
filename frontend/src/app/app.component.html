@@ -1,4 +1,19 @@
-<!-- app.component.html -->
-<div class="center">
-  <app-login (login)="submitLogin($event)"></app-login>
-</div>
+<main>
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-brand">Authentication App</div>
+      <div class="navbar-links">
+        <ng-container *ngIf="!isLoggedIn; else loggedIn">
+          <button routerLink="/login">Login</button>
+        </ng-container>
+        <ng-template #loggedIn>
+          <button (click)="logout()">Logout</button>
+          <span>Hi, {{ username }}</span>
+        </ng-template>
+      </div>
+    </div>
+  </nav>
+  <section class="content">
+    <router-outlet></router-outlet>
+  </section>
+</main>
