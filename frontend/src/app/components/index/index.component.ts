@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Question } from '../../interfaces/question';
 import { PollsApiService } from '../../services/polls-api.service';
+import { AuthService } from '../../services/auth.service';
 import { NgFor, NgIf } from '@angular/common';
 import { RouterLink } from '@angular/router';
 @Component({
@@ -11,17 +12,18 @@ import { RouterLink } from '@angular/router';
   styleUrl: './index.component.css'
 })
 
-export class IndexComponent{
+export class IndexComponent implements OnInit{
   questions = [] as Question[];
-  constructor(private pollsApi: PollsApiService) { }
+  isLoggedIn: boolean = false;
 
+  constructor(
+    private pollsApi: PollsApiService,
+    private authService: AuthService
+  ) { }
 
-
-  imprimirMensagem(): void {
-    console.log('Botão pressionado! Uma mensagem foi impressa.');
+  ngOnInit(): void {
     this.pollsApi.getQuestions().then(questions => {
       this.questions = questions;
-      console.log('Perguntas:', questions);
-    });
+    }); 
   }
 }

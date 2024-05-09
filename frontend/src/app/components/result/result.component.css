@@ -1,0 +1,47 @@
+.question-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.choice-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.choice-item {
+  margin-bottom: 10px;
+}
+
+.choice-text {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.votes {
+  font-size: 16px;
+  color: #666;
+}
+
+.vote-again {
+  display: block;
+  margin-top: 20px;
+  font-size: 16px;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.vote-again:hover {
+  text-decoration: underline;
+}
+
+.secodary-button {
+  margin-top: 10px;
+}
