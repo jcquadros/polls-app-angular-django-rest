@@ -1,1 +1,11 @@
-<p>index works!</p>
+<!-- <div *ngIf="questions.length > 0; else noPolls">
+	<ul>
+		<li *ngFor="let question of questions">
+			<a [routerLink]="['/questions', question.id]">{{ question.question_text }}</a>
+		</li>
+	</ul>
+</div>
+<ng-template #noPolls>
+	<p>No polls are available.</p>
+</ng-template> -->
+<button (click)="imprimirMensagem()">Pressione-me!</button>

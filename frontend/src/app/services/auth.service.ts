@@ -14,12 +14,12 @@ export class AuthService {
 
   constructor() {
     this.client = axios.create({
-      baseURL: 'http://127.0.0.1:8000',
+      baseURL: 'http://127.0.0.1:8000/api-auth/',
     });
   }
 
-  async login(username: string, password: string): Promise<any> {
-    return this.client.post('/api/login', { username, password })
+  login(username: string, password: string): Promise<any> {
+    return this.client.post('login', { username, password })
       .then(res => {
         return res.data;
       })
@@ -29,7 +29,7 @@ export class AuthService {
   }
 
   logout(): Promise<any> {
-    return this.client.post('/api/logout')
+    return this.client.post('logout')
       .then(res => {
         return res.data;
       })
@@ -39,7 +39,7 @@ export class AuthService {
   }
 
   register(username: string, password: string): Promise<any> {
-    return this.client.post('/api/register', { username, password })
+    return this.client.post('register', { username, password })
       .then(res => {
         return res.data;
       })
@@ -49,9 +49,8 @@ export class AuthService {
   }
 
   whoAmI(): Promise<any> {
-    return this.client.get('/api/user')
+    return this.client.get('user')
       .then(res => {
-        console.log(res.data);
         return res.data;
       })
       .catch(err =>{
@@ -60,7 +59,7 @@ export class AuthService {
   }
 
   isAuthenticated(): Promise<boolean> {
-    return this.client.get('/api/is-authenticated')
+    return this.client.get('is-authenticated')
       .then(res => {
         console.log(res.data.authenticated);
         return res.data.authenticated; 

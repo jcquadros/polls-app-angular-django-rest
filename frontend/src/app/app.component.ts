@@ -20,7 +20,9 @@ export class AppComponent implements OnInit{
   async ngOnInit() {
     this.isLoggedIn = await this.authService.isAuthenticated();
     if (this.isLoggedIn) {
-      this.username = await this.authService.whoAmI();
+      const resp = await this.authService.whoAmI();
+      this.username = resp.user.username;
+      
     }
   }
 
@@ -28,7 +30,12 @@ export class AppComponent implements OnInit{
     this.authService.logout()
       .then(() => {
         console.log('Logout successful');
-        // Redirecionar para outra página após o logout bem-sucedido, se necessário
+        this.isLoggedIn = false;
+        this.username = '';
+        
+        // redirecionar para a home
+        window.location.href = '/';
+        
       })
       .catch(error => {
         console.error('Logout failed:', error);

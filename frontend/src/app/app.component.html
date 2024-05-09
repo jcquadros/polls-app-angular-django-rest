@@ -4,11 +4,11 @@
       <div class="navbar-brand">Authentication App</div>
       <div class="navbar-links">
         <ng-container *ngIf="!isLoggedIn; else loggedIn">
-          <button routerLink="/login">Login</button>
+          <button class="primary-button" routerLink="/login">Login</button>
         </ng-container>
         <ng-template #loggedIn>
-          <button (click)="logout()">Logout</button>
           <span>Hi, {{ username }}</span>
+          <button class="primary-button" (click)="logout()">Logout</button>
         </ng-template>
       </div>
     </div>

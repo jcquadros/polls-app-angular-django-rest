@@ -19,27 +19,12 @@
   font-size: 1.5rem;
 }
 
-.navbar-links button {
-  background: none;
-  border: none;
-  color: var(--black-color);
-  cursor: pointer;
-  font-size: 1rem;
-}
-
-.navbar-links button:hover {
-  text-decoration: underline;
-}
-
 .content {
   flex: 1;
   padding: 20px;
 }
 
-.logout-button {
-  background-color: #dc3545;
-}
 
-.logout-button:hover {
-  background-color: #c82333; 
+button {
+  margin-left: 10px;
 }

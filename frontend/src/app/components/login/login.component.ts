@@ -21,7 +21,11 @@ export class LoginComponent {
 
   login(){
     this.authService.login(this.username, this.password)
-      .then(data => console.log('Sucesso', data))
+      .then(data => {
+        // next page
+        window.location.href = '/';
+      }
+      )
       .catch(err => {console.error('Falha', err);
         this.errorMessage = 'Falha no Login. Por favor cheque suas credenciais.'
       })
