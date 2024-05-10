@@ -3,7 +3,7 @@ import { Question } from '../../interfaces/question';
 import { PollsApiService } from '../../services/polls-api.service';
 import { AuthService } from '../../services/auth.service';
 import { NgFor, NgIf } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 @Component({
   selector: 'app-index',
   standalone: true,
@@ -18,12 +18,22 @@ export class IndexComponent implements OnInit{
 
   constructor(
     private pollsApi: PollsApiService,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
-    this.pollsApi.getQuestions().then(questions => {
-      this.questions = questions;
-    }); 
+
+    this.authService.isAuthenticated().then(isLoggedIn => {
+      if (!isLoggedIn) {
+        this.router.navigate(['/login']);
+      }else{
+        this.pollsApi.getQuestions().then(questions => {
+          this.questions = questions;
+        }); 
+      }
+    });
+
+    
   }
 }

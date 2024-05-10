@@ -5,6 +5,7 @@
       <div class="navbar-links">
         <ng-container *ngIf="!isLoggedIn; else loggedIn">
           <button class="primary-button" routerLink="/login">Login</button>
+          <button class="secondary-button" routerLink="/register">Register</button>
         </ng-container>
         <ng-template #loggedIn>
           <span>Hi, {{ username }}</span>

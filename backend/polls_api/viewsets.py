@@ -12,8 +12,7 @@ class QuestionViewSet(viewsets.ModelViewSet):
     """
     queryset = Question.objects.all().order_by('-pub_date')
     serializer_class = QuestionSerializer
-    #permission_classes = [permissions.IsAuthenticated]
-    permission_classes = [permissions.AllowAny]
+    permission_classes = [permissions.IsAuthenticated]
     authentication_classes = [SessionAuthentication]
     lookup_field = 'pk'
 
@@ -31,8 +30,7 @@ class ChoiceViewSet(viewsets.ModelViewSet):
     """
     queryset = Choice.objects.all().order_by('-votes')
     serializer_class = ChoiceSerializer
-    #permission_classes = [permissions.IsAuthenticated]
-    permission_classes = [permissions.AllowAny]
+    permission_classes = [permissions.IsAuthenticated]
     authentication_classes = [SessionAuthentication]
     lookup_field = 'pk'
 

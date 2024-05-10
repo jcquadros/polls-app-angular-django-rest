@@ -54,14 +54,14 @@ export class PollsApiService {
       });
   }
 
-  async vote(choiceId: number): Promise<void> {
-    await fetch(`http://127.0.0.1:8000/api/choices/${choiceId}/vote/`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-CSRFToken': 'csrftoken'
-      }
-    });
+  vote(choiceId: number): Promise<void> {
+    return this.client.post(`choices/${choiceId}/vote/`)
+      .then(() => {
+        return;
+      })
+      .catch(err =>{
+        console.error('Erro ao votar:', err);
+      });
   }
 
 

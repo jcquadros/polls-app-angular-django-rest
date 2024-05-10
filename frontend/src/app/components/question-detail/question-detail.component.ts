@@ -5,6 +5,7 @@ import { PollsApiService } from '../../services/polls-api.service';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../../services/auth.service';
 
 
 @Component({
@@ -24,11 +25,18 @@ export class QuestionDetailComponent {
   constructor(
     private pollsApi: PollsApiService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) {}
 
   // Ao iniciar o componente, recuperar a pergunta e as opções
   ngOnInit(): void {
+    this.authService.isAuthenticated().then(isLoggedIn => {
+      if (!isLoggedIn) {
+        this.router.navigate(['/login']);
+      }
+    });
+
     this.route.params.subscribe(params => {
       const id = params['id'];
       this.pollsApi.getQuestion(id).then((question) => {
