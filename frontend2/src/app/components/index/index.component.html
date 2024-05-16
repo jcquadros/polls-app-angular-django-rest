@@ -1,0 +1,11 @@
+<div *ngIf="questions.length > 0; else noPolls" class="question-list">
+	<ul>
+			<li *ngFor="let question of questions" class="question-item">
+					<a [routerLink]="['/question', question.id]" class="question-link">{{ question.question_text }}</a>
+			</li>
+	</ul>
+</div>
+
+<ng-template #noPolls>
+	<p class="no-polls-message">No polls are available.</p>
+</ng-template>

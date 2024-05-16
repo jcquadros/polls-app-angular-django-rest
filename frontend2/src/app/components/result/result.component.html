@@ -1,0 +1,13 @@
+<div class="question-container">
+  <h1>{{ question.question_text }}</h1>
+  
+  <ul class="choice-list">
+    <li *ngFor="let choice of choice_set" class="choice-item">
+      <span class="choice-text">{{ choice.choice_text }}</span> <br>
+      <span class="votes">{{ choice.votes }} vote{{ choice.votes != 1 ? 's' : '' }}</span>
+    </li>  
+  </ul>
+  
+  <a [routerLink]="['/question', question.id]" class="vote-again">Vote again</a>
+  <button [routerLink]="['/']" class="secondary-button">Back</button>
+</div>

@@ -1,0 +1,22 @@
+.question-list {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.question-item {
+  margin-bottom: 10px;
+}
+
+.question-link {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.question-link:hover {
+  text-decoration: underline;
+}
+
+.no-polls-message {
+  font-size: 18px;
+  color: var(--secondary-color);
+}

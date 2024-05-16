@@ -1,0 +1,20 @@
+<main>
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-brand">Authentication App</div>
+      <div class="navbar-links">
+        <ng-container *ngIf="!isLoggedIn; else loggedIn">
+          <button class="primary-button" routerLink="/login">Login</button>
+          <button class="secondary-button" routerLink="/register">Register</button>
+        </ng-container>
+        <ng-template #loggedIn>
+          <span>Hi, {{ username }}</span>
+          <button class="primary-button" (click)="logout()">Logout</button>
+        </ng-template>
+      </div>
+    </div>
+  </nav>
+  <section class="content">
+    <router-outlet></router-outlet>
+  </section>
+</main>

@@ -1,0 +1,50 @@
+.form-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.vote-form {
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+legend {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.error-message {
+  color: red;
+  margin-bottom: 10px;
+}
+
+.choice {
+  margin-bottom: 10px;
+}
+
+input[type="radio"] {
+  margin-right: 10px;
+}
+
+label {
+  font-size: 18px;
+}
+
+.votes {
+  font-size: 16px;
+  color: #666;
+}
+
+.primary-button {
+  margin-top: 10px;
+}
+
+.secondary-button {
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+fieldset{
+  padding: 20px;
+}
